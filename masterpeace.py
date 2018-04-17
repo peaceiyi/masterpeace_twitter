@@ -8,10 +8,10 @@ import os
 #tweets = str(sys.argv[1]) + ".txt"
 
 #enter the corresponding information from your Twitter application:
-CONSUMER_KEY = 'De0FSHQ3aMShBeePwHqjESwVn'#keep the quotes, replace this with your consumer key
-CONSUMER_SECRET = 'fQboQLJX58Sx3h9QLiw6mPPl7ORwUKA6tAlqnHj3oU6YkCeIRh'#keep the quotes, replace this with your consumer secret key
-ACCESS_KEY = '917211703196123142-8E760BtYeEyw4lrl4uxm7pncGK9JA7y'#keep the quotes, replace this with your access token
-ACCESS_SECRET = 'BTxNi53jpZeW68M2v8aKTB7qhzedltvVT3MUQdJgVSSM6'#keep the quotes, replace this with your access token secret
+CONSUMER_KEY = ''#keep the quotes, replace this with your consumer key
+CONSUMER_SECRET = ''#keep the quotes, replace this with your consumer secret key
+ACCESS_KEY = ''#keep the quotes, replace this with your access token
+ACCESS_SECRET = ''#keep the quotes, replace this with your access token secret
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 api = tweepy.API(auth)
@@ -50,17 +50,10 @@ def cleantweet(dirty_tweet):
     return clean_tweet
 
 sendbeatsbot = api.get_user('metaphorminute')
-#print(sendbeatsbot.followers())
-
-#make initial request for most recent tweets (200 is the maximum allowed count)
-#new_tweets = api.user_timeline(screen_name = screen_name,count=200)
 
 done = False
 while not done:
     new_tweet = api.user_timeline(screen_name = 'SendBeatsBot',count=1)[0]
-    #new_tweets = api.user_timeline(screen_name = 'hopepotamus23',count=1)
-    #print((new_tweet.retweeted_status.id)) #THIS IS THE ID OF THE RETWEETED STATUS
-    #print((new_tweet.retweeted_status.author.screen_name))
 
     if str(new_tweet.id) in tweet_replied:
         print("no new tweets")
@@ -82,7 +75,7 @@ while not done:
         with open("tweet_replied.txt", "a") as f:
             f.write(str(new_tweet.id) + "\n")
 
-    if time.time() > start + END_TIME: #try to understand this!
+    if time.time() > start + END_TIME: 
         print("**************PROGRAM DONE*************")
         done = True
         break
