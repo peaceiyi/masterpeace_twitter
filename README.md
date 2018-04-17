@@ -1,4 +1,4 @@
-# TWITTER BEAT ADVERTISER!
+# Twitter Advertiser!
 
 It's a twitter bot to advertise your soundcloud. All you need is
 
